@@ -1,0 +1,350 @@
+
+@import "./_themeify.scss";
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  // color: white;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // font-family:  Courier, monospace;
+  // font-family:  "MICROSOFT JHENGHEI";
+  // font-family: "NOTO SERIF SC";
+  // font-family:  "PINGFANG SC MEDIUM";
+  // font-family:  "PINGFANG SC MEDIUM";
+  /* overflow-x: hidden; */
+  // 设置的移动端点击阴影
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  // position: relative;
+  overscroll-behavior-y: contain; // 禁止掉浏览器自身的顶部下拉刷新
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin: 0px;
+}
+
+
+p , ul , li{
+  margin: 0;
+  padding: 0;
+}
+
+ul{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style-type:none;
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;  
+  background-color: rgb(232, 232, 232);
+}
+
+::-webkit-scrollbar-thumb {
+  // background-color: rgb(192, 238, 244);
+  background-color: rgb(94, 206, 221);
+  border-radius: 5px;
+} 
+
+pre::-webkit-scrollbar{
+  width: 4px;  
+  height: 4px;
+}
+
+
+
+// 鼠标选中文本
+::selection{ 
+  background-color:#6b6b6b; 
+  color:rgb(255, 255, 255); 
+}
+
+
+
+.mdContentBar  {
+   h1 ,h2,h3,h4,h5{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 5px;
+    padding-left: 18px;
+    padding-right: 20px;
+    border-radius: 5px;
+    border-left: solid 5px rgb(12, 174, 196);
+    font-weight: 500;
+    @include themeify {
+      background-color: themed('md-h-color'); 
+    }  
+    background-color: #efefef; 
+    transition: all .5s;
+    &:hover {
+      @include hover-effect; 
+      // cursor: pointer;
+    }
+        
+   }
+
+}
+
+.mdContentBar h1 {
+  font-size: 22px;
+  width: 80%;
+  // &::before {
+  //   content: "# ";
+  // }
+}
+
+.mdContentBar h2 {
+  font-size: 20px;
+  width: 75%;  
+  @media screen and (max-width: 800px){
+    width: 80%;
+  }
+}
+
+.mdContentBar h3 {
+  font-size: 20px;
+  width: 60%;
+  // &::before {
+  //   content: "### ";
+  // }
+}
+
+.mdContentBar h4 {
+  font-size: 16px;
+  width: 50%;
+}
+
+.mdContentBar h5 {
+  font-size: 16px;
+  width: 50%;
+}
+
+.mdContentBar h6 {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.mdContentBar p{
+  margin-bottom: 10px;
+  font-size: 16px;
+  margin-left: 5px;
+  line-height: 150%;
+  width: 90%;
+  word-break:break-all;  // 不加这个在p标签里连续英文不会换行
+}
+
+.mdContentBar hr {
+  height: 5px;
+  width: 100%;
+  padding: 0;
+  // margin: 0;
+  border: none;
+  @include themeify {
+    border-bottom: .5px solid themed('box-bg-color-deep');
+  }  
+  
+}
+
+
+.mdContentBar ul {
+  align-items: flex-start;
+  justify-content: flex-start;  
+  flex-direction: column;
+  padding-left: 20px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  >li  {
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  margin-bottom: 8px;
+  padding-left: 14px;
+    &::before {
+      content: "▪ ";
+      left: 0px;
+      position: absolute;
+      color: rgb(12, 174, 196);
+    }
+
+    >p {
+      // margin-left: auto;
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: justify;
+      text-justify: inter-ideograph;
+      margin-bottom: 4px;
+    }
+  }
+
+}
+
+.mdContentBar ol {
+  align-items: flex-start;
+  justify-content: flex-start;   
+  flex-direction: row;
+  padding-left: 40px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  position: relative;
+  counter-reset: sectioncounter;
+  > li:before {
+    position: absolute;
+    left: 10px;
+    @include themeify {
+      background-color: themed('md-li-before-color');
+    }  
+    
+    color: rgb(118, 195, 205);
+    padding-left: 6px;
+    padding-right: 6px;
+
+    border-radius: 25%;
+    content: counter(sectioncounter) '. ';
+    counter-increment: sectioncounter;
+  }
+
+  >li {
+    margin-bottom: 8px;    
+    flex-direction: row;
+  }
+
+}
+
+.mdContentBar pre {
+  background-color: rgb(198, 226, 230);
+  border-top: 8px solid rgb(20, 134, 149);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 8px;
+  font-size: 14px;
+  min-height: 50px;
+  height: auto;
+  max-height: 500px;
+  overflow: auto;
+  color: rgb(57, 57, 57);
+  @media screen and (max-width: 800px){
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @media screen and (min-width: 800px){
+    min-width: 60%;
+    max-width: 80%;
+  }  
+}
+
+
+.mdContentBar  code {
+  font-family: 'Gill Sans MT';
+  padding: 5px;
+}
+
+
+.mdContentBar blockquote {
+  @include themeify {
+    background-color: themed('md-blockquote-bg-color');
+    color: themed('md-blockquote-color');    
+  }  
+
+  font-style: italic;
+  border-radius: 6px;
+  border-left: 6px solid rgb(71, 71, 71);
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  >p{
+    margin: 0;
+  }
+}
+
+.mdContentBar img {
+  max-width: 90%;
+}
+
+
+body , div, h1 , h2 , h3 , h4 , h5 , h6 , ul , ol , li , 
+p , th , td , dd , dt , dl {
+  @include themeify {
+    color: themed('font-color') ;
+  }  
+
+}
+
+
+a {
+  color: rgb(42, 104, 227);
+}
+
+
+.icon {
+  margin: 10px;
+  width: 34px;
+  height: 34px;
+  margin-left: 20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  .music {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #c20c0c;
+    overflow: hidden;
+  }  
+
+  .douban {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: green;
+    overflow: hidden;      
+  }
+}
+
+.github {
+  background-color: white;
+}
+.el-dialog{
+  flex-direction: column;
+  >div{
+    flex-direction: column;
+  }
+}
+
+.el-popconfirm {
+  flex-direction: column;
+}

@@ -1,0 +1,47 @@
+@import "./_themeify.scss";
+
+@mixin hover-effect {
+  @include themeify {
+    color:themed('text-hover-effect-color') !important;
+  }  
+  
+}
+
+@mixin articleTitle-default {
+    padding-left: 10px;
+    // padding-right: 10px;
+    box-sizing: border-box;
+    min-width: 50%;
+    max-width: 80%;
+    height: 36px;
+
+    font-size: 22px;
+    justify-content: flex-start;
+    cursor: pointer;
+    transition: all .5s;
+    @include themeify {
+      border-bottom:  2px solid themed('btn-hover-color');
+    }  
+    
+    &:hover{
+      @include themeify {
+        border-bottom:  2px solid themed('line-color-deep');
+      }  
+      
+    }
+
+    &::-webkit-scrollbar {
+      width: 0px;
+      height: 0px;
+  }
+}
+
+@mixin articleData-default {
+  height: 26px;
+  width: 120px;
+  @include themeify {
+    background-color: themed('box-bg-color-deep');
+  }  
+  
+  border-radius: 6px;
+}
